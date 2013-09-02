@@ -33,3 +33,10 @@ nosetests.xml
 .mr.developer.cfg
 .project
 .pydevproject
+.settings
+
+# Amazon
+*.cfg
+
+.sass-cache/
+.DS_Store
