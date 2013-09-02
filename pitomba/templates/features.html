@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section class="container">
+    <article class="sixteen column">
+        <h3>Features</h3>
+        <p></p>
+		<ul class="square">
+			<li>
+				<strong>Synchronous</strong>
+				<p>Pitomba provides a Sprite class that can be instantiated and used to generate sprite as user (or another automatic process) demands it via 
+				an HTML page, for example.</p>
+				<a href="{{SERVER_NAME}}/demo">Demo</a>
+			</li>
+			<li>
+				<strong>Asynchronous</strong>
+				<p>Also, pitomba provides a watcher that listens to your filesystem and generates a new sprite as soon as a image is updated.
+				It's very similar to what compass does.</p>
+			</li>
+		</ul>
+    </article>
+</section>
+{% end %}
