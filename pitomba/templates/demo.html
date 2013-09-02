@@ -2,9 +2,72 @@
 
 {% block content %}
 <section class="container">
-    <article class="sixteen column">
+    <div class="six columns">
         <h3>Demo</h3>
-        <p></p>
-    </article>
+        <p>Pitomba source comes with a demo script that explains how users can generate sprites synchronously.</p>
+        <p>To use it, just type 'python demo.py'</p>
+        <p>We'll only explain main lines as others are just python code.</p>
+        <ul>
+            <li>(1) Instantiate Sprite class: no big deal here! Just Python :)</li>
+            <li>(2) files: all image files (absolut path) that will compose sprite</li>
+            <li>(3) sprite_path: absolute path where sprite will be saved (a NFS path, for example).
+            If not provided, Pitomba will use current dir.</li>
+            <li>(4) sprite_name: a name for sprite file (png extension, only)</li>
+            <li>(5) sprite_url: URL where sprite image can be found. It could be a URL from Amazon S3, for instance.
+            If not provided, Pitomba will use sprite_path instead. Final url will be sprite_url + sprite_name.</li>
+            <li>(6) css_path: an absolut path in where generated CSS will be written (a NFS path, for example).</li>
+            <li>(7) class_name: just a namespace for generated CSS.</li>
+            <li>(8) method do_write_css: write CSS on the filesystem</li>
+            <li>(9) method do_write_image: write image on the filesystem</li>
+            <li>(10) method get_css: get CSS string representation.</li>
+        </ul>
+    </div>
+    <div class="nine columns">
+        <h3>demo.py</h3>
+        <pre>
+SPRITE_PATH = os.getcwd() + "/demo/sprite/"
+CSS_PATH = os.getcwd() + "/demo/css/"
+IMAGE_PATH = os.getcwd() + "/demo/img/"
+
+def gen_sprite():
+    css = ""
+    image = ""
+    files = []
+
+    #get images absolut paths
+    for (_, _, filenames) in os.walk(IMAGE_PATH):
+        files.extend(map(lambda x: "{0}{1}".format(IMAGE_PATH, x), filenames))
+        break
+
+    if files != []:
+        #instantiate Sprite class <strong>(1)</strong>
+        sprite = Sprite(files, #<strong>(2)</strong>
+                        #path where sprite will be generated <strong>(3)</strong>
+                        sprite_path=SPRITE_PATH,
+
+                        #optional <strong>(4)</strong>
+                        sprite_name="demo.png",
+
+                        #optional <strong>(5)</strong>
+                        sprite_url="http://pitomba.org/static/demo/",
+
+                        #optional, defines where css will be saved <strong>(6)</strong>
+                        css_path=CSS_PATH,
+
+                        #optional, defines a namespace for your sprite <strong>(7)</strong>
+                        class_name="demo")
+
+        #write css file and return OS path <strong>(8)</strong>
+        css = sprite.do_write_css()
+
+        #write sprite file and return OS path <strong>(9)</strong>
+        image = sprite.do_write_image()
+
+        #if you just want the CSS file content simply use:
+        #sprite.get_css() <strong>(10)</strong>
+        #this will return a string that can be used anyway you want to.
+    return (css, image)
+    </pre>
+    </div>
 </section>
 {% end %}
