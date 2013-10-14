@@ -27,7 +27,7 @@ def prod():
 @task
 def setup():
     """Setup project"""
-    packages = 'nginx python python-pip'
+    packages = 'nginx python python-pip gcc python2.7-dev'
 
     with prefix('DEBIAN_FRONTEND=noninteractive'):
         sudo('apt-get update')

@@ -4,7 +4,7 @@ from functools import partial
 
 get_path_to = partial(os.path.join, os.path.dirname(__file__))
 
-DEBUG = False
+DEBUG = True
 
 TEMPLATE_PATH = get_path_to("templates")
 STATIC_PATH = get_path_to("static")

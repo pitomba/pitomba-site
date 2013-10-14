@@ -4,6 +4,10 @@ PORT = 9082
 
 SERVER_NAME = 'http://pitomba.org'
 
+UPLOAD_PATH = get_path_to('uploads')
+
+DEBUG = False
+
 LOGGING['root']['handlers'] = ['file']
 LOGGING['handlers']['file'] = {
     'level': 'INFO',
