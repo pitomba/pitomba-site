@@ -6,7 +6,7 @@ clean:
 	rm -rf build
 
 deploy-prod:
-	fab -i ~/Downloads/victorpantoja.pem prod deploy
+	fab -i ~/Documents/victorpantoja.pem prod deploy
 
 setup:
 	@echo "Installing dependencies..."

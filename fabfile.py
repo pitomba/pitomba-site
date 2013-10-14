@@ -83,6 +83,9 @@ def deploy():
     """Deploy project to server"""
     local("find . -name '*.pyc' -print0|xargs -0 rm -rf", capture=False)
     local("find . -name '.sass-cache' -print0|xargs -0 rm -rf", capture=False)
+
+    install_requirements()
+
     sudo('rm -rf {}pitomba'.format(PROJECT_DIR))
     put(os.path.join(LOCAL_DIR, 'pitomba'), PROJECT_DIR, use_sudo=True)
 
