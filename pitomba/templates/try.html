@@ -10,6 +10,7 @@
 		<form enctype="multipart/form-data" action="/try" method="post">
 			<input type="file" name="file" />
 			<input type="file" name="file" />
+			<input type="file" name="file" />
 			<input type="submit" value="upload" />
 		</form>
 		<h3>Or paste URLs:</h3>
@@ -17,6 +18,8 @@
 	{% if success %}
 	<div class="six columns">
 	   <h3>Done!</h3>
+	   <a href="{{css}}">View CSS</a>
+	   <a href="{{image}}">View Image</a>
 	   <span class="button">Download Sprite</span>
 	   <span class="button">Download CSS</span>
 	</div>

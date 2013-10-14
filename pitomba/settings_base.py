@@ -8,6 +8,7 @@ DEBUG = False
 
 TEMPLATE_PATH = get_path_to("templates")
 STATIC_PATH = get_path_to("static")
+STATIC_DEMO_PATH = STATIC_PATH + '/demo'
 
 LOGGING = {
     'version': 1,
