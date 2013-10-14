@@ -38,5 +38,6 @@ nosetests.xml
 # Amazon
 *.cfg
 
+pitomba/uploads/
 .sass-cache/
 .DS_Store
