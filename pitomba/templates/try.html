@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section class="container">
+    <div class="eight columns">
+		<h3>Choose Files to Upload</h3>
+		{% if not success%}
+		<p>{{message}}</p>
+		{% end %}
+		<form enctype="multipart/form-data" action="/try" method="post">
+			<input type="file" name="file" />
+			<input type="file" name="file" />
+			<input type="submit" value="upload" />
+		</form>
+		<h3>Or paste URLs:</h3>
+	</div>
+	{% if success %}
+	<div class="six columns">
+	   <h3>Done!</h3>
+	   <span class="button">Download Sprite</span>
+	   <span class="button">Download CSS</span>
+	</div>
+    {% end %}
+</section>
+{% end %}
