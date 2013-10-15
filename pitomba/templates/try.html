@@ -14,14 +14,27 @@
 			<input type="submit" value="upload" />
 		</form>
 		<h3>Or paste URLs:</h3>
+		<p>One URL per line.</p>
+		<form action="/try" method="post">
+			<textarea rows="10" cols="15" id="urls" name="urls"></textarea>
+			<input type="submit" value="generate" />
+		</form>
 	</div>
 	{% if success %}
+	<style>
+	   {{css}}
+	</style>
 	<div class="six columns">
 	   <h3>Done!</h3>
-	   <a href="{{css}}">View CSS</a>
-	   <a href="{{image}}">View Image</a>
+	   <a href="{{css_url}}" target="_new">View CSS</a>
+	   <a href="{{img_url}}" target="_new">View Image</a>
+	   <br />
 	   <span class="button">Download Sprite</span>
 	   <span class="button">Download CSS</span>
+	   <hr />
+	   {% for entidade in entidades %}
+	   <span class="demo {{entidade}}" style="display: block;"></span>
+       {% end %}
 	</div>
     {% end %}
 </section>
